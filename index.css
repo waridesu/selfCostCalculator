@@ -1,9 +1,66 @@
 fieldset {
     display: flex;
 }
-fieldset input {
-    display: block;
+div , p {
+    font-size: 30px;
 }
+button {
+    margin: 20px auto;
+    font-size: 30px;
+}
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+.countItem {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.countItem .removeFieldset {
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    font-size: 24px;
+    line-height: 12px;
+    padding: 0;
+    border: unset;
+    background-color: unset;
+    outline: unset;
+}
+.countItemLabel {
+    width: 46%;
+    font-size: 30px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000;
+}
+.countItemLabel:nth-child(-n + 2) {
+    margin-bottom: 16px;
+}
+
+.countItemLabel input,
+.name-input input {
+    border: unset;
+    display: block;
+    width: 100%;
+    font-size: 30px;
+    outline: unset;
+
+}
+.name-input {
+    font-size: 30px;
+    display: block;
+    width: 30%;
+    border-bottom: 2px solid #000;
+}
+
 fieldset button {
     align-self: flex-end;
+}
+.result-item__flex {
+    display: flex;
+}
+.result-item__flex :first-child {
+    margin-right: 10px;
 }

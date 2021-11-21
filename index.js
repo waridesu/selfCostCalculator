@@ -3,6 +3,9 @@ const resultContainer = document.querySelector('.result')
 const countButton = document.querySelector('#countButton')
 const moreButton = document.querySelector('#addMore')
 const removeFieldSetButton = document.querySelector('.removeFieldset')
+const nameInput = document.querySelector('#nameOfProduct')
+
+let total;
 let result = []
 let arrayValues = []
 
@@ -44,14 +47,31 @@ countButton.addEventListener('click', () => {
         })
     })
     arrayValues.forEach((item)=> {
-        result.push({name:item.name, result: (Number(item.inReceipt) / Number(item.inPackage) * Number(item.costOfPackage)).toFixed(2) })
+        result.push({name:item.name, result: (Number(item.inReceipt) / Number(item.inPackage) * Number(item.costOfPackage)) })
     })
+    total = result.reduce((prev, obj)=> prev + obj.result, 0);
     result.forEach((html)=> {
         resultContainer.insertAdjacentHTML('beforeend',`
-        <div>
+        <div class="result-item">
+            <div class="result-item__flex">
                 <p>${html.name}</p>
-                <p>${html.result}</p>
+                <p>${html.result.toFixed(2)}</p>
+            </div>
         </div>
         `)
+    })
+    resultContainer.insertAdjacentHTML('afterbegin', `<h3>${nameInput.value}</h3>`)
+    resultContainer.insertAdjacentHTML('beforeend', `<div>
+    <b>total</b> ${total.toFixed(2)}
+    <input id="someNumber" type="number"/>
+    <button id="deleteSome" type="button">/</button>
+    </div>`)
+    const deleteSome = document.querySelector('#deleteSome')
+    const someNumber = document.querySelector('#someNumber')
+    deleteSome.addEventListener('click',()=> {
+
+        resultContainer.insertAdjacentHTML('beforeend', `<div>
+        portion price: ${total / someNumber.value}
+    </div>`)
     })
 })
