@@ -10,6 +10,7 @@ div , p {
 }
 button {
     margin: 20px 0;
+    padding: 12px;
     font-size: 37px;
 }
 h1 {
