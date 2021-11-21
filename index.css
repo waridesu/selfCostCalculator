@@ -1,0 +1,9 @@
+fieldset {
+    display: flex;
+}
+fieldset input {
+    display: block;
+}
+fieldset button {
+    align-self: flex-end;
+}

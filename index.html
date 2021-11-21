@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<form>
+    <button type="button" id="addMore">add items field</button>
+    <div class="fieldSetContainer">
+        <fieldset class="countItem">
+            <label class="countItemLabel">
+                name of ingredient
+                <input name="name" type="text"/>
+            </label>
+            <label  class="countItemLabel">
+                in package
+                <input name="inPackage" type="number"/>
+            </label>
+            <label class="countItemLabel">
+                cost of package
+                <input name="costOfPackage" type="number"/>
+            </label>
+            <label class="countItemLabel">
+                in receipt
+                <input name="inReceipt" type="number"/>
+            </label>
+            <button class="removeFieldset">x</button>
+        </fieldset>
+    </div>
+
+    <button id="countButton" type="button">
+        count
+    </button>
+</form>
+<div class="result"></div>
+</body>
+</html>
