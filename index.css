@@ -4,8 +4,12 @@ fieldset {
 div , p {
     font-size: 37px;
 }
+.form-controls {
+    display: flex;
+    justify-content: space-around;
+}
 button {
-    margin: 20px auto;
+    margin: 20px 0;
     font-size: 37px;
 }
 h1 {
