@@ -2,14 +2,14 @@ fieldset {
     display: flex;
 }
 div , p {
-    font-size: 30px;
+    font-size: 37px;
 }
 button {
     margin: 20px auto;
-    font-size: 30px;
+    font-size: 37px;
 }
 h1 {
-    font-size: 40px;
+    font-size: 47px;
     text-align: center;
 }
 .countItem {
@@ -22,7 +22,7 @@ h1 {
     position: absolute;
     top: 2px;
     right: 4px;
-    font-size: 24px;
+    font-size: 37px;
     line-height: 12px;
     padding: 0;
     border: unset;
@@ -31,7 +31,7 @@ h1 {
 }
 .countItemLabel {
     width: 46%;
-    font-size: 30px;
+    font-size: 37px;
     text-transform: uppercase;
     border-bottom: 2px solid #000;
 }
@@ -44,15 +44,16 @@ h1 {
     border: unset;
     display: block;
     width: 100%;
-    font-size: 30px;
+    font-size: 37px;
     outline: unset;
 
 }
 .name-input {
-    font-size: 30px;
+    font-size: 37px;
     display: block;
-    width: 30%;
+    width: 40%;
     border-bottom: 2px solid #000;
+    margin-bottom: 38px;
 }
 
 fieldset button {
