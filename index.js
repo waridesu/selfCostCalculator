@@ -2,7 +2,6 @@ const fieldSetContainer = document.querySelector('.fieldSetContainer')
 const resultContainer = document.querySelector('.result')
 const countButton = document.querySelector('#countButton')
 const moreButton = document.querySelector('#addMore')
-const removeFieldSetButton = document.querySelector('.removeFieldset')
 const nameInput = document.querySelector('#nameOfProduct')
 
 let total;
@@ -11,67 +10,62 @@ let arrayValues = []
 
 moreButton.addEventListener('click', ()=> {
     fieldSetContainer.insertAdjacentHTML('beforeend', `
-    <fieldset class="countItem">
-            <label class="countItemLabel">
-                name of ingredient
-                <input name="name" type="text"/>
+    <fieldset>
+            <label>
+                ingredient title
+                <input name="name" type="text" required/>
             </label>
-            <label  class="countItemLabel">
+            <label>
                 in package
-                <input name="inPackage" type="number"/>
+                <input name="inPackage" type="number" required/>
             </label>
-            <label class="countItemLabel">
+            <label>
                 cost of package
-                <input name="costOfPackage" type="number"/>
+                <input name="costOfPackage" type="number" required/>
             </label>
-            <label class="countItemLabel">
+            <label>
                 in receipt
-                <input name="inReceipt" type="number"/>
+                <input name="inReceipt" type="number" required/>
             </label>
-            <button class="removeFieldset">x</button>
+            <button class="removeFieldset" type="button">x</button>
         </fieldset>`)
 })
-removeFieldSetButton.addEventListener('click', (evt) => {
-    evt.target.parentElement.remove()
-})
-countButton.addEventListener('click', () => {
-    resultContainer.replaceChildren()
-    arrayValues = []
-    result = [];
-    [...fieldSetContainer.children].forEach((item) => {
-        arrayValues.push({
-            name: (item.children.item(0).children.item(0)).value,
-            inPackage: (item.children.item(1).children.item(0)).value,
-            costOfPackage: (item.children.item(2).children.item(0)).value,
-            inReceipt: (item.children.item(3).children.item(0)).value,
-        })
-    })
-    arrayValues.forEach((item)=> {
-        result.push({name:item.name, result: (Number(item.inReceipt) / Number(item.inPackage) * Number(item.costOfPackage)) })
-    })
-    total = result.reduce((prev, obj)=> prev + obj.result, 0);
-    result.forEach((html)=> {
-        resultContainer.insertAdjacentHTML('beforeend',`
-        <div class="result-item">
-            <div class="result-item__flex">
-                <p>${html.name}</p>
-                <p>${html.result.toFixed(2)}</p>
-            </div>
-        </div>
-        `)
-    })
-    resultContainer.insertAdjacentHTML('afterbegin', `<h3>${nameInput.value}</h3>`)
-    resultContainer.insertAdjacentHTML('beforeend', `<div>
-    <b>total</b> ${total.toFixed(2)}
-    <input id="someNumber" type="number"/>
-    <button id="deleteSome" type="button">/</button>
-    </div>`)
-    const deleteSome = document.querySelector('#deleteSome')
-    const someNumber = document.querySelector('#someNumber')
-    deleteSome.addEventListener('click',()=> {
+fieldSetContainer.addEventListener('click', (evt) => {
+    if(evt.target.type === 'button') { evt.target.parentNode.remove() }})
 
-        resultContainer.insertAdjacentHTML('beforeend', `<div>
-        portion price: ${total / someNumber.value}
-    </div>`)
-    })
+countButton.addEventListener('click', (evt) => { evt.preventDefault();
+    if(document.querySelector("form").reportValidity() === true) {
+        arrayValues = []
+        result = [];
+        [...fieldSetContainer.children].forEach((item) => {
+            arrayValues.push({
+                name: (item.children.item(0).children.item(0)).value,
+                inPackage: (item.children.item(1).children.item(0)).value,
+                costOfPackage: (item.children.item(2).children.item(0)).value,
+                inReceipt: (item.children.item(3).children.item(0)).value,
+            })})
+        arrayValues.forEach((item)=> {
+            result.push({name:item.name, result: (Number(item.inReceipt) / Number(item.inPackage) * Number(item.costOfPackage)) })
+        })
+        total = result.reduce((prev, obj)=> prev + obj.result, 0);
+        while (resultContainer.hasChildNodes()) {
+            resultContainer.removeChild(resultContainer.lastChild);
+        }
+        result.forEach((html)=> {
+            resultContainer.insertAdjacentHTML('beforeend',
+                `<p>${html.name}:  ${html.result.toFixed(2)}</p>`)
+        })
+        resultContainer.insertAdjacentHTML('afterbegin', `<h3>${nameInput.value}</h3>`)
+        resultContainer.insertAdjacentHTML('beforeend', `
+        <label class="total-count">
+            <b>total: </b> ${total.toFixed(2)}
+            <input id="totalNumber" type="number"/>
+            <button id="knowPart" type="button">/</button>
+        </label>`)
+        const knowPart = document.querySelector('#knowPart')
+        const totalNumber = document.querySelector('#totalNumber')
+        knowPart.addEventListener('click',()=> resultContainer.insertAdjacentHTML(
+            'beforeend', `<p>portion price: ${total / totalNumber.value}</p>`)
+        )
+    }
 })

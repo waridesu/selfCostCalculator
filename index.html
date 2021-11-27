@@ -8,37 +8,36 @@
 </head>
 <body>
 <h1>Self cost calculator</h1>
-<label class="name-input">
-    enter name of product
-    <input id='nameOfProduct' type="text" />
-</label>
+
 <form>
+    <label class="name-input">
+        product title
+        <input id='nameOfProduct' type="text" required/>
+    </label>
     <div class="fieldSetContainer">
-        <fieldset class="countItem">
+        <fieldset>
             <label class="countItemLabel">
-                name of ingredient
-                <input name="name" type="text"/>
+                ingredient title
+                <input name="name" type="text" required/>
             </label>
             <label  class="countItemLabel">
                 in package
-                <input name="inPackage" type="number"/>
+                <input name="inPackage" type="number" required/>
             </label>
             <label class="countItemLabel">
                 cost of package
-                <input name="costOfPackage" type="number"/>
+                <input name="costOfPackage" type="number" required/>
             </label>
             <label class="countItemLabel">
                 in receipt
-                <input name="inReceipt" type="number"/>
+                <input name="inReceipt" type="number" required/>
             </label>
-            <button class="removeFieldset">x</button>
+            <button class="removeFieldset" type="button">x</button>
         </fieldset>
     </div>
     <div class="form-controls">
         <button type="button" id="addMore">add items field</button>
-        <button id="countButton" type="button">
-            count
-        </button>
+        <button id="countButton">count</button>
     </div>
 
 </form>

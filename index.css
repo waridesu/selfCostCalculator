@@ -1,72 +1,77 @@
-fieldset {
+body {
+    margin: 20px;
+}
+
+input {
+    border: unset;
+    width: 100%;
+    outline: unset;
+}
+
+label, .total-count b {
+    display: block;
+    text-transform: uppercase;
+}
+
+label:not(.total-count), .total-count input {
+    width: 48%;
+    border-bottom: 2px solid #000;
+}
+
+fieldset, .result-item__flex, .total-count {
     display: flex;
 }
-div , p {
+
+div, p, button, input, label {
     font-size: 37px;
 }
+
 .form-controls {
-    display: flex;
-    justify-content: space-around;
+    width: fit-content;
+    margin: 30px auto;
 }
+
+.form-controls button:last-child {
+    margin-left: 20px;
+    margin-right: 100px;
+}
+
 button {
-    margin: 20px 0;
-    padding: 12px;
-    font-size: 37px;
+    border: unset;
+    border-radius: 20px;
+    padding: 24px;
 }
+
 h1 {
     font-size: 47px;
     text-align: center;
 }
-.countItem {
+
+fieldset, .name-input {
     position: relative;
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-}
-.countItem .removeFieldset {
-    position: absolute;
-    top: 2px;
-    right: 4px;
-    font-size: 37px;
-    line-height: 12px;
-    padding: 0;
-    border: unset;
-    background-color: unset;
-    outline: unset;
-}
-.countItemLabel {
-    width: 46%;
-    font-size: 37px;
-    text-transform: uppercase;
-    border-bottom: 2px solid #000;
-}
-.countItemLabel:nth-child(-n + 2) {
-    margin-bottom: 16px;
-}
-
-.countItemLabel input,
-.name-input input {
-    border: unset;
-    display: block;
-    width: 100%;
-    font-size: 37px;
-    outline: unset;
-
-}
-.name-input {
-    font-size: 37px;
-    display: block;
-    width: 44%;
-    border-bottom: 2px solid #000;
-    margin-bottom: 38px;
+    margin-bottom: 20px;
 }
 
 fieldset button {
-    align-self: flex-end;
+    position: absolute;
+    top: 0;
+    right: 14px;
+    padding: 0 ;
+    border: unset;
+    background-color: unset;
 }
-.result-item__flex {
-    display: flex;
+
+fieldset label:nth-child(-n + 2) {
+    margin-bottom: 16px;
 }
-.result-item__flex :first-child {
-    margin-right: 10px;
+
+.result-item__flex, .total-count {
+    align-items: center;
+}
+
+.total-count button {
+    margin-left: 20px;
+    padding: 24px 36px;
 }
