@@ -17,15 +17,15 @@ moreButton.addEventListener('click', ()=> {
             </label>
             <label>
                 in package
-                <input name="inPackage" type="number" required min="1"/>
+                <input name="inPackage" type="number" required min="1" step="any"/>
             </label>
             <label>
                 cost of package
-                <input name="costOfPackage" type="number" required min="1"/>
+                <input name="costOfPackage" type="number" required min="1" step="any"/>
             </label>
             <label>
                 in receipt
-                <input name="inReceipt" type="number" required min="1"/>
+                <input name="inReceipt" type="number" required min="1" step="any"/>
             </label>
             <button class="removeFieldset" type="button">x</button>
         </fieldset>`)
@@ -59,7 +59,7 @@ countButton.addEventListener('click', (evt) => { evt.preventDefault();
         resultContainer.insertAdjacentHTML('beforeend', `
         <label class="total-count">
             <b>total: </b> ${total.toFixed(2)}
-            <input id="totalNumber" type="number" min="1"/>
+            <input id="totalNumber" type="number" min="1" step="any"/>
             <button id="knowPart" type="button">/</button>
         </label>`)
         const knowPart = document.querySelector('#knowPart')
